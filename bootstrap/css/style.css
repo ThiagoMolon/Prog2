@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+:root{
+    --bg-dark: #212529;
+    --bg-color: #d2d5d8;
+    --text-white: #fff;
+    --text-color: #000;
+    --bg-blue: #133b79;
+}
+
+*{
+    font-family: EB Garamond, serif;
+}
+
+body{
+    background-color: var(--bg-blue);
+}
+h1{
+    color: var(--text-color);
+}
+
+img{
+    width: auto;
+    height: auto;
+}
+
+.carousel .carousel-item {
+    height: 600px;
+}
+.carousel .carousel-item img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Imagens dos cards na seção "Disponíveis" */
+#disponiveis .card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+#disponiveis, #outros{
+    background-color: var(--bg-blue);
+}
+
+/* Remover bordas brancas laterais do carousel em #outros */
+#outros .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#outros .carousel {
+    width: 100%;
+}
+
+img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
