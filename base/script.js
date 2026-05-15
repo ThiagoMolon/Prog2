@@ -1,1 +1,3 @@
-      alert("Bem-vindo ao site!");
+function a (){
+ alert("3"+"4"-"5");
+}

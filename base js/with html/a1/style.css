@@ -1,0 +1,33 @@
+:root
+{
+  --primary-color: #4CAF50;
+  --secondary-color: #f44336;
+  --font-family: 'Arial', sans-serif;
+  --bg-primary: #272525;
+  --bg-secondary: #f0f0f0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--bg-secondary);
+  margin: 0;
+  padding: 20px;
+}
+form.form-example {
+  display: table;
+}
+
+div.form-example {
+  display: table-row;
+}
+
+label,
+input {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+label {
+  padding-right: 10px;
+}

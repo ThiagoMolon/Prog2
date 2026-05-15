@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="content-wrapper">
+            <!-- Seção de Cálculo -->
+            <div class="card calculator-card">
+                <div class="card-header bg-primary">
+                    <h1 class="text-white mb-0">Calculadora de IMC</h1>
+                </div>
+                <div class="card-body">
+                    <form id="formIMC">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="peso" class="form-label">Peso (kg)</label>
+                                <input type="number" class="form-control form-control-lg" id="peso" name="peso" 
+                                       placeholder="Ex: 70" step="0.1" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="altura" class="form-label">Altura (m)</label>
+                                <input type="number" class="form-control form-control-lg" id="altura" name="altura" 
+                                       placeholder="Ex: 1.75" step="0.01" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100" id="calcular">Calcular IMC</button>
+                    </form>
+
+                    <!-- Resultado -->
+                    <div id="resultado" class="alert alert-info mt-4 p-4 text-center d-none">
+                        <p class="mb-2">Seu IMC é:</p>
+                        <h2 id="imc-valor" class="mb-2">--</h2>
+                        <p id="imc-categoria" class="mb-0 fw-bold">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Informações -->
+            <div class="info-section mt-5">
+                <h2 class="text-center mb-4">Categorias de IMC</h2>
+                
+                <div id="AB" class="info-card card border-success mb-3 hidden-info">
+                    <div class="card-header bg-success">
+                        <h3 class="mb-0 text-white">Abaixo do peso</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Estar abaixo do peso ideal pode ser tão preocupante quanto estar acima. Isso pode indicar desnutrição, problemas de saúde ou distúrbios alimentares. É importante buscar orientação médica para identificar a causa e adotar um plano de alimentação adequado para alcançar um peso saudável.</p>
+                    </div>
+                </div>
+
+                <div id="PN" class="info-card card border-success mb-3 hidden-info">
+                    <div class="card-header bg-success">
+                        <h3 class="mb-0 text-white">Peso normal</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Parabéns! Manter um peso saudável é fundamental para a prevenção de doenças e para o bem-estar geral. Continue cuidando da sua saúde com uma alimentação equilibrada e a prática regular de atividades físicas.</p>
+                    </div>
+                </div>
+
+                <div id="SB" class="info-card card border-warning mb-3 hidden-info">
+                    <div class="card-header bg-warning">
+                        <h3 class="mb-0 text-dark">Sobrepeso</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>O sobrepeso é um sinal de que o corpo está acumulando mais gordura do que o recomendado. Embora ainda não seja considerado obesidade, é importante ficar atento e adotar hábitos saudáveis para evitar o avanço para as categorias seguintes.</p>
+                    </div>
+                </div>
+
+                <div id="OB1" class="info-card card border-danger mb-3 hidden-info">
+                    <div class="card-header bg-danger">
+                        <h3 class="mb-0 text-white">Obesidade grau I</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>O excesso de peso já é um fator de risco para o desenvolvimento de doenças crônicas, como diabetes e hipertensão. É fundamental adotar hábitos saudáveis, como uma alimentação equilibrada e a prática regular de exercícios físicos.</p>
+                    </div>
+                </div>
+
+                <div id="OB2" class="info-card card border-danger mb-3 hidden-info">
+                    <div class="card-header bg-danger">
+                        <h3 class="mb-0 text-white">Obesidade grau II</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Ainda que seus exames estejam normais, essa faixa exige atenção. É importante buscar suporte médico e nutricional para a implementação de mudanças no seu estilo de vida.</p>
+                    </div>
+                </div>
+
+                <div id="OB3" class="info-card card border-dark mb-3 hidden-info">
+                    <div class="card-header bg-dark">
+                        <h3 class="mb-0 text-white">Obesidade grau III</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Alerta máximo! Nessa faixa, é muito provável que já existam doenças graves associadas ao excesso de peso. O tratamento precisa ser imediato e acompanhado de perto por profissionais capacitados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

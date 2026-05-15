@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Círculo Trigonométrico Interativo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+      color: #fff;
+      padding: 24px 16px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      font-weight: 400;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      margin-bottom: 16px;
+      width: 380px;
+      max-width: 100%;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .field label {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.03em;
+    }
+
+    .field input {
+      background: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 14px;
+      padding: 7px 10px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .field input:focus {
+      border-color: #888;
+    }
+
+    button {
+      background: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 13px;
+      padding: 8px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s;
+      height: 36px;
+      align-self: flex-end;
+    }
+
+    button:hover {
+      background: #2a2a2a;
+      border-color: #777;
+    }
+
+    canvas {
+      border: 1px solid #333;
+      border-radius: 8px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <div class="field">
+      <label>Ângulo (°)</label>
+      <input type="number" id="inp-angle" min="0" max="360" step="1" value="45" />
+    </div>
+    <div class="field">
+      <label>Seno</label>
+      <input type="number" id="inp-sin" min="-1" max="1" step="0.01" />
+    </div>
+    <div class="field">
+      <label>Cosseno</label>
+      <input type="number" id="inp-cos" min="-1" max="1" step="0.01" />
+    </div>
+    <button id="btn-toggle">&#9646;&#9646; Pausar</button>
+  </div>
+
+  <div id="canvas-container"></div>
+
+  <script>
+    let angle = 45;
+    let animating = true;
+    let frameRef = 0;
+
+    const inpAngle = document.getElementById('inp-angle');
+    const inpSin   = document.getElementById('inp-sin');
+    const inpCos   = document.getElementById('inp-cos');
+    const btnToggle = document.getElementById('btn-toggle');
+
+    function syncFromAngle(a) {
+      angle = ((a % 360) + 360) % 360;
+      inpAngle.value = angle.toFixed(1);
+      inpSin.value   = Math.sin(angle * Math.PI / 180).toFixed(4);
+      inpCos.value   = Math.cos(angle * Math.PI / 180).toFixed(4);
+    }
+
+    inpAngle.addEventListener('input', () => {
+      animating = false;
+      btnToggle.innerHTML = '&#9654; Animar';
+      syncFromAngle(parseFloat(inpAngle.value) || 0);
+    });
+
+    inpSin.addEventListener('input', () => {
+      animating = false;
+      btnToggle.innerHTML = '&#9654; Animar';
+      let s = Math.max(-1, Math.min(1, parseFloat(inpSin.value) || 0));
+      let a = Math.asin(s) * 180 / Math.PI;
+      let cosVal = parseFloat(inpCos.value);
+      if (!isNaN(cosVal) && cosVal < 0) a = 180 - a;
+      syncFromAngle(a);
+    });
+
+    inpCos.addEventListener('input', () => {
+      animating = false;
+      btnToggle.innerHTML = '&#9654; Animar';
+      let c = Math.max(-1, Math.min(1, parseFloat(inpCos.value) || 0));
+      let a = Math.acos(c) * 180 / Math.PI;
+      let sinVal = parseFloat(inpSin.value);
+      if (!isNaN(sinVal) && sinVal < 0) a = 360 - a;
+      syncFromAngle(a);
+    });
+
+    btnToggle.addEventListener('click', () => {
+      animating = !animating;
+      btnToggle.innerHTML = animating ? '&#9646;&#9646; Pausar' : '&#9654; Animar';
+    });
+
+    syncFromAngle(45);
+
+    new p5(function(p) {
+      const cX = 165, cY = 150, cR = 90;
+      const gX = 30, gY = 305, gAmp = 55, gPeriod = 310;
+
+      p.setup = function() {
+        let cnv = p.createCanvas(380, 390);
+        cnv.parent('canvas-container');
+        p.angleMode(p.DEGREES);
+      };
+
+      p.draw = function() {
+        p.background(0);
+
+        if (animating) {
+          frameRef = (frameRef + 1) % 360;
+          syncFromAngle(frameRef);
+        }
+
+        let a = angle;
+
+        // Info no topo
+        p.fill(200);
+        p.noStroke();
+        p.textSize(13);
+        p.textAlign(p.LEFT, p.CENTER);
+        p.text(
+          `ângulo: ${parseFloat(inpAngle.value).toFixed(1)}°  ` +
+          `sin: ${parseFloat(inpSin.value).toFixed(3)}  ` +
+          `cos: ${parseFloat(inpCos.value).toFixed(3)}`,
+          10, 18
+        );
+
+        // Círculo e eixos
+        p.noFill();
+        p.stroke(100);
+        p.strokeWeight(2);
+        p.circle(cX, cY, 2 * cR);
+        p.line(cX, cY - cR, cX, cY + cR);
+        p.line(cX - cR, cY, cX + cR, cY);
+
+        // Ponto no círculo
+        let px = cX + cR * p.cos(a);
+        let py = cY - cR * p.sin(a);
+
+        p.stroke(100);
+        p.strokeWeight(2);
+        p.line(cX, cY, px, py);
+
+        p.noStroke();
+        p.fill(255);
+        p.circle(px, py, 11);
+        p.fill('orange');
+        p.circle(px, cY, 11);
+        p.fill('red');
+        p.circle(cX, py, 11);
+
+        // Eixos do gráfico
+        p.stroke('grey');
+        p.strokeWeight(2);
+        p.line(gX, gY, gX + gPeriod, gY);
+        p.line(gX, gY - gAmp, gX, gY + gAmp);
+        p.line(gX + gPeriod, gY - gAmp, gX + gPeriod, gY + gAmp);
+
+        p.fill('grey');
+        p.strokeWeight(1);
+        p.textSize(12);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.text('0',   gX,           gY + gAmp + 16);
+        p.text('360', gX + gPeriod, gY + gAmp + 16);
+        p.text('1',   gX - 16,      gY - gAmp);
+        p.text('0',   gX - 16,      gY);
+        p.text('-1',  gX - 16,      gY + gAmp);
+
+        p.fill('orange');
+        p.text('cos', gX + gPeriod + 22, gY - gAmp);
+        p.fill('red');
+        p.text('sin', gX + gPeriod + 22, gY);
+
+        // Curva cosseno
+        p.noFill();
+        p.stroke('orange');
+        p.strokeWeight(2);
+        p.beginShape();
+        for (let t = 0; t <= 360; t++) {
+          let x = p.map(t, 0, 360, gX, gX + gPeriod);
+          let y = gY - gAmp * p.cos(t);
+          p.vertex(x, y);
+        }
+        p.endShape();
+
+        // Curva seno
+        p.noFill();
+        p.stroke('red');
+        p.strokeWeight(2);
+        p.beginShape();
+        for (let t = 0; t <= 360; t++) {
+          let x = p.map(t, 0, 360, gX, gX + gPeriod);
+          let y = gY - gAmp * p.sin(t);
+          p.vertex(x, y);
+        }
+        p.endShape();
+
+        // Linha vertical móvel
+        let lineX = p.map(a, 0, 360, gX, gX + gPeriod);
+        p.stroke('grey');
+        p.strokeWeight(1.5);
+        p.line(lineX, gY - gAmp, lineX, gY + gAmp);
+
+        // Pontos móveis no gráfico
+        let oY = gY - gAmp * p.cos(a);
+        let rY = gY - gAmp * p.sin(a);
+        p.noStroke();
+        p.fill('orange');
+        p.circle(lineX, oY, 11);
+        p.fill('red');
+        p.circle(lineX, rY, 11);
+      };
+    });
+  </script>
+</body>
+</html>
