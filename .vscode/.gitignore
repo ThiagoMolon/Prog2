@@ -1,2 +1,4 @@
 # GitShift personal account configuration
 github-accounts.json
+Backend/express/node_modules/
+Frontend/react/node_modules/
