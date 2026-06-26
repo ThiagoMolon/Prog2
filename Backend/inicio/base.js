@@ -6,6 +6,8 @@ const server = http.createServer((req, res) => {
         res.write('Bem-vindo ao meu servidor!');
     } else if (req.url === '/sobre') {
         res.write('Esta é a página sobre nós.');
+    } else if (req.url === '/contato') {
+        res.write('aaa');
     } else {
         res.write('Página não encontrada.');
     }

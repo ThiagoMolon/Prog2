@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa do Mundo ⚽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: #0d1117;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #ffc500;
+            color: #0d1117;
+        }
+        nav a.active {
+            background-color: #ffc500;
+            color: #0d1117;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 40px;
+        }
+        h2 {
+            color: #2a5298;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffc500;
+            padding-left: 15px;
+        }
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .emoji {
+            font-size: 50px;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/" class="active">🏠 Home</a></li>
+            <li><a href="/historia">📚 História</a></li>
+            <li><a href="/curiosidades">🎯 Curiosidades</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="emoji">⚽</div>
+        <h1>Copa do Mundo FIFA</h1>
+        
+        <p>Bem-vindo ao site sobre a <strong>Copa do Mundo FIFA</strong>, o maior torneio de futebol do planeta! 🌍</p>
+        
+        <div class="highlight">
+            <h2>O que é Copa do Mundo?</h2>
+            <p>A Copa do Mundo é um torneio internacional de futebol masculino organizado pela FIFA (Federação Internacional de Futebol) que ocorre a cada 4 anos. É considerada a competição mais importante do futebol mundial, reunindo os melhores times de 32 a 48 seleções nacionais.</p>
+        </div>
+
+        <h2>🌟 Destaques</h2>
+        <p>• <strong>Primeira edição:</strong> 1930 no Uruguai</p>
+        <p>• <strong>Campeão com mais títulos:</strong> Brasil com 5 troféus</p>
+        <p>• <strong>Próxima edição:</strong> 2026 (Estados Unidos, México e Canadá)</p>
+
+        <h2>Navegue pelo site</h2>
+        <p>Clique no menu para explorar a história das Copas do Mundo e descobrir curiosidades incríveis sobre esse torneio legendário!</p>
+        <ul>
+            <% for(let i=0; i<time.length; i++) {
+                %>
+                <li><%= time[i] %></li>
+                <%
+            } %>
+        </ul>
+    </div>
+</body>
+</html>

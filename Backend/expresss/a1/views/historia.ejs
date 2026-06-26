@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História da Copa do Mundo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: #0d1117;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #ffc500;
+            color: #0d1117;
+        }
+        nav a.active {
+            background-color: #ffc500;
+            color: #0d1117;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 40px;
+        }
+        h2 {
+            color: #2a5298;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffc500;
+            padding-left: 15px;
+        }
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .timeline {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        .year {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .champion {
+            color: #ffc500;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">🏠 Home</a></li>
+            <li><a href="/historia" class="active">📚 História</a></li>
+            <li><a href="/curiosidades">🎯 Curiosidades</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>📚 História da Copa do Mundo</h1>
+        
+        <h2>O Início</h2>
+        <p>A primeira Copa do Mundo FIFA foi realizada em <strong>1930 no Uruguai</strong>. Apenas 13 seleções participaram do torneio. O Uruguai sagrou-se campeão, derrotando a Argentina na final.</p>
+
+        <h2>Evolução do Torneio</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="year">1930 - 1º Copa do Mundo</div>
+                <p>Local: Uruguai | Campeão: <span class="champion">Uruguai</span> 🇺🇾</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">1950 - Copa no Brasil</div>
+                <p>Local: Brasil | Campeão: <span class="champion">Uruguai</span> 🇺🇾 (derrota memorável contra a Suécia)</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">1970 - Brasil Tricampeão</div>
+                <p>Local: México | Campeão: <span class="champion">Brasil</span> 🇧🇷 (conquistou o terceiro título)</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">1994 - Copa nos EUA</div>
+                <p>Local: Estados Unidos | Campeão: <span class="champion">Brasil</span> 🇧🇷</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2002 - Brasil Pentacampeão</div>
+                <p>Local: Coreia do Sul e Japão | Campeão: <span class="champion">Brasil</span> 🇧🇷 (Ronaldo, Ronaldinho, Rivaldo)</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2014 - Copa no Brasil</div>
+                <p>Local: Brasil | Campeão: <span class="champion">Alemanha</span> 🇩🇪 (goleada histórica de 7x1)</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2022 - Copa no Catar</div>
+                <p>Local: Catar | Campeão: <span class="champion">Argentina</span> 🇦🇷 (Messi finalmente conquista a Copa!)</p>
+            </div>
+        </div>
+
+        <h2>Maiores Campeões</h2>
+        <p>🥇 <strong>Brasil:</strong> 5 títulos (1958, 1962, 1970, 1994, 2002)</p>
+        <p>🥈 <strong>Alemanha e Itália:</strong> 4 títulos cada</p>
+        <p>🥉 <strong>França:</strong> 2 títulos (1998, 2018)</p>
+    </div>
+</body>
+</html>
