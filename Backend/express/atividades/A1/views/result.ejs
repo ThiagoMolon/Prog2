@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Formulário</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            display: block;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .value {
+            display: block;
+            color: #333;
+            font-size: 16px;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-back:hover {
+            background-color: #d0d0d0;
+            transform: translateX(-5px);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-print:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✓ Dados Recebidos</h1>
+        
+        <div class="info-group">
+            <span class="label">Nome</span>
+            <span class="value"><%= name %></span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Email</span>
+            <span class="value"><%= email %></span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Telefone</span>
+            <span class="value"><%= phone %></span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Data de Nascimento</span>
+            <span class="value"><%= date %></span>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-back" onclick="history.back()">← Voltar</button>
+            <button class="btn-print" onclick="window.print()">🖨️ Imprimir</button>
+        </div>
+    </div>
+</body>
+</html>
