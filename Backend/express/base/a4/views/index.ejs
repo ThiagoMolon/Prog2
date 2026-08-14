@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleções Campeãs</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Seleções campeãs</h1>
+        <section class="cards">
+            <% selecoes.forEach((selecao) => { %>
+                <article class="card">
+                    <div class="flag"><img src="/<%= selecao.flag %>" alt="<%= selecao.nome %>"></div>
+                    <h2><%= selecao.nome %></h2>
+                    <p><%= selecao.titulos %> títulos</p>
+                </article>
+            <% }) %>
+        </section>
+    </main>
+</body>
+</html>
