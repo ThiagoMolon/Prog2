@@ -13,6 +13,16 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+Produto = []
+
+app.post('/submit', (req, res) => {
+  const nome = req.body.name;
+  const tipo = req.body.type;
+  Produto.push({ nome, tipo });
+  res.render('result', { Produto });
+});
+
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

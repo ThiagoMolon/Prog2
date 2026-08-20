@@ -13,6 +13,15 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+Jogador = []
+
+app.post('/submit', (req, res) => {
+  const name = req.body.name;
+  const gols = req.body.Gols;
+  Jogador.push({ name, gols });
+  res.render('result', { Jogador });
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

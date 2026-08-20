@@ -6,6 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <table>
+        <tr>
+            <th>Nome do Jogador</th>
+            <th>Numero de Gols</th>
+        </tr>
+        <% Jogador.forEach(jogador => { %>
+        <tr>
+            <td><%= jogador.name %></td>
+            <td><%= jogador.gols %></td>
+        </tr>
+        <% }); %>
+    </table>
+    <a href="/">Adicionar mais jogadores</a>
 </body>
 </html>

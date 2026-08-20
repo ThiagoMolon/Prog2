@@ -6,6 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Estoque</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Produto.forEach((item) => { %>
+            <tr>
+                <td><%= item.nome %></td>
+                <td><%= item.estoque %></td>
+                <td><%= item.valor %></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <a href="/">Voltar</a>
 </body>
 </html>

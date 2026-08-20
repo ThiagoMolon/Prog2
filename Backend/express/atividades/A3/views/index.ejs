@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Atividades</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px 40px;
+            max-width: 700px;
+            width: 100%;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 35px;
+            font-size: 14px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background-color: #f8f9fa;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .section-title {
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button {
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            button {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Gerenciador de Atividades</h1>
+        <p class="subtitle">Adicione uma nova atividade abaixo</p>
+
+        <form action="/submit" method="post">
+            <div class="form-row full">
+                <div class="form-group">
+                    <label for="Atvname">Nome da Atividade</label>
+                    <input type="text" id="Atvname" name="Atvname" placeholder="Ex: Estudar JavaScript" required>
+                </div>
+            </div>
+
+            <div class="form-row full">
+                <div class="form-group">
+                    <label for="Atvdesc">Descrição da Atividade</label>
+                    <input type="text" id="Atvdesc" name="Atvdesc" placeholder="Ex: Estudar conceitos de ES6" required>
+                </div>
+            </div>
+
+            <p class="section-title">📅 Datas</p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="AtvdateInit">Data de Início</label>
+                    <input type="date" id="AtvdateInit" name="AtvdateInit" required>
+                </div>
+                <div class="form-group">
+                    <label for="AtvdateEnd">Data de Fim</label>
+                    <input type="date" id="AtvDateEnd" name="AtvdateEnd" required>
+                </div>
+            </div>
+
+            <p class="section-title">⏰ Horários</p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="Atvtimeinit">Hora de Início</label>
+                    <input type="time" id="Atvtimeinit" name="Atvtimeinit" required>
+                </div>
+                <div class="form-group">
+                    <label for="Atvtimend">Hora de Fim</label>
+                    <input type="time" id="Atvtimend" name="Atvtimend" required>
+                </div>
+            </div>
+
+            <button type="submit">✓ Enviar Atividade</button>
+        </form>
+    </div>
+</body>
+</html>
