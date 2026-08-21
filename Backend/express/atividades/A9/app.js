@@ -14,7 +14,7 @@ let Filme = [];
 
 
 app.get('/', (req, res) => {
-  res.render('index',);
+  res.render('index');
 });
 
 let filmes =[];
