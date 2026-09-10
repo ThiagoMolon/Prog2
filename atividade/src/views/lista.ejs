@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/filtrar" method="POST">
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="nulo">Escolha um</option>
+            <option value="camisa">Camisa</option>
+            <option value="calca">Calça</option>
+            <option value="saia">Saia</option>
+            <option value="calsado">Calsado</option>
+            <option value="meia">Meia</option>
+        </select>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Produto.forEach(Produto => { %>
+                <tr>
+                    <td><%= Produto.nome %></td>
+                    <td><%= Produto.marca %></td>
+                    <td><%= Produto.categoria %></td>
+                    <td><%= Produto.valor  %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <a href="/">voltar</a>
+</body>
+
+</html>
